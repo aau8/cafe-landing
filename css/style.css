@@ -6,6 +6,7 @@
 }
 
 body {
+	min-width: 320px;
 	font-family: 'Inter', sans-serif;
 	font-size: 16px;
 	color: #212121;
@@ -95,12 +96,15 @@ img {
 	background-color: #3059c0;
 }
 
+.header__burger {
+	margin-left: 16px;
+}
+
 .burger {
 	display: none;
 	position: relative;
 	width: 24px;
 	height: 24px;
-	margin-left: 16px;
 }
 
 .burger span {
@@ -124,6 +128,17 @@ img {
 	transform: translate(-50%, calc(-50% + 6px));
 }
 
+.burger.is-close span:nth-child(1) {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.burger.is-close span:nth-child(2) {
+	width: 0;
+}
+
+.burger.is-close span:nth-child(3) {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
 
 /* Главный экран */
 .main {
@@ -257,15 +272,20 @@ img {
 		position: fixed;
 		z-index: 1;
 		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
+		left: 100%;
+		width: 100%;
+		height: 100%;
 		background-color: #fff;
 		display: flex;
 		justify-content: center;
 		margin: 0;
 		padding: 32px 16px;
 		overflow: auto;
+		transition: .3s;
+	}
+
+	.menu.is-show {
+		left: 0;
 	}
 
 	.menu__list {
@@ -278,6 +298,12 @@ img {
 
 	.menu__item {
 		font-size: 16px;
+	}
+
+	.menu__close {
+		position: absolute;
+		top: 16px;
+		right: 16px;
 	}
 
 	.header__callback {
